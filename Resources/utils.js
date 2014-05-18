@@ -99,4 +99,10 @@ function stripTags (str, allowed_tags) {
     return str;
 }
 
+function log() {
+    var a = Array.prototype.slice.call(arguments, 0);
+    a.unshift('ANSA>>>: ');
+    console.log(a);
+}
 exports.stripTags = stripTags;
+exports.log = log;

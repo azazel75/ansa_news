@@ -1,6 +1,7 @@
 function ApplicationWindow(posts) {
     //load component dependencies
     var PostsList = require('ui/common/PostsList');
+    var BrowserWindow = require('ui/common/BrowserWindow');
 
     //create component instance
     var self = Ti.UI.createWindow({
@@ -10,9 +11,7 @@ function ApplicationWindow(posts) {
 
     function itemClick(e) {
         var ditem = e.section.getItemAt(e.itemIndex);
-        var wv = Ti.UI.createWebView({url: ditem.link});
-        self.add(wv);
-
+        BrowserWindow(ditem.link, ditem.title.text).open();
     }
     //construct UI
     var posts_view = new PostsList(posts.blog_posts, itemClick);
