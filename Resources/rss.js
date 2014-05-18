@@ -5,6 +5,8 @@
 // :Licenza:   GNU General Public License version 3 or later
 //
 
+utils = require('/utils');
+
 function getPosts(url, callback) {
     url = url || "http://ansa.feedsportal.com/c/34225/f/621689/index.rss";
     var client = Ti.Network.createHTTPClient({
@@ -19,7 +21,7 @@ function getPosts(url, callback) {
                     title: items.item(i).getElementsByTagName("title").item(0).textContent,
                     link: items.item(i).getElementsByTagName("link").item(0).textContent,
                     date: items.item(i).getElementsByTagName("pubDate").item(0).textContent,
-                    description: items.item(i).getElementsByTagName("description").item(0).textContent
+                    description: utils.stripTags(items.item(i).getElementsByTagName("description").item(0).textContent)
 
                 });
             }

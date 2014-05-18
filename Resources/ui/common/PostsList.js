@@ -13,6 +13,7 @@ var templates = {
                 bindId: 'title',
                 properties: {
                     left: '10dp',
+                    right: 10,
                     color: 'blue'
                 }
             },
@@ -21,7 +22,7 @@ var templates = {
                 bindId: 'description',
                 properties: {
                     left: 10,
-                    right: 10,
+                    right: 30,
                     color: 'black',
                     font: {
                         fontSize: 10
@@ -46,7 +47,6 @@ var templates = {
 function PostsList(data, click_cback) {
 
     var list_data = _.map(data, function(post) {
-        console.log(post);
         return {title: {text: post.title},
                 date: {text: post.date},
                 description: {text: post.description},

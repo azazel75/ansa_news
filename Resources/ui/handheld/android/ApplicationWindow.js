@@ -5,12 +5,17 @@ function ApplicationWindow(posts) {
     //create component instance
     var self = Ti.UI.createWindow({
         backgroundColor:'#ffffff',
-        navBarHidden:true,
         exitOnClose:true
     });
 
+    function itemClick(e) {
+        var ditem = e.section.getItemAt(e.itemIndex);
+        var wv = Ti.UI.createWebView({url: ditem.link});
+        self.add(wv);
+
+    }
     //construct UI
-    var posts_view = new PostsList(posts.blog_posts);
+    var posts_view = new PostsList(posts.blog_posts, itemClick);
     self.add(posts_view);
 
     return self;
