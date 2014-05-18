@@ -47,10 +47,15 @@ var templates = {
 function PostsList(data, click_cback) {
 
     var list_data = _.map(data, function(post) {
-        return {title: {text: post.title},
-                date: {text: post.date},
-                description: {text: post.description},
-                link: post.link};
+        return {
+            title: {text: post.title},
+            date: {text: post.date},
+            description: {text: post.description},
+            link: post.link,
+            properties: {
+                searchableText: post.title + ' ' + post.description
+            }
+        };
     });
     var sec = Ti.UI.createListSection({items: list_data});
     var list = Ti.UI.createListView({
