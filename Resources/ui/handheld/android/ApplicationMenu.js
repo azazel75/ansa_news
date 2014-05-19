@@ -7,13 +7,14 @@
 
 var utils = require('utils');
 
-function createApplicationMenu(win) {
+function createApplicationMenu(win, refresh_handler) {
     var search = Ti.UI.Android.createSearchView({
         hintText: "Cerca",
         iconified: true
-    });
+    }),
+        result = {};
 
-    exports.search = search;
+    result.search = search;
 
     win.activity.onCreateOptionsMenu = function(e) {
         var menu = e.menu;
@@ -23,7 +24,15 @@ function createApplicationMenu(win) {
             icon: Ti.Android.R.drawable.ic_menu_search,
             showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
         });
+        menuItem = menu.add({
+            title: 'Ricarica',
+            icon: 'images/refresh.png',
+            showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+        });
+        if (refresh_handler)
+            menuItem.addEventListener('click', refresh_handler);
     };
+    return result;
 }
 
 exports.createApplicationMenu = createApplicationMenu;

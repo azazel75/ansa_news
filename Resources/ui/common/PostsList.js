@@ -44,8 +44,7 @@ var templates = {
     }
 };
 
-function PostsList(data, click_cback) {
-
+function prepareData(data) {
     var list_data = _.map(data, function(post) {
         return {
             title: {text: post.title},
@@ -57,7 +56,16 @@ function PostsList(data, click_cback) {
             }
         };
     });
-    var sec = Ti.UI.createListSection({items: list_data});
+    return list_data;
+}
+
+function updateList(new_data) {
+    console.log(new_data);
+    this.sections[0].setItems(prepareData(new_data));
+}
+
+function PostsList(data, click_cback) {
+    var sec = Ti.UI.createListSection({items: prepareData(data)});
     var list = Ti.UI.createListView({
         sections:[sec],
         templates: templates,
@@ -65,6 +73,7 @@ function PostsList(data, click_cback) {
     });
     if (click_cback)
         list.addEventListener('itemclick', click_cback);
+    list.updateList = updateList;
     return list;
 }
 
