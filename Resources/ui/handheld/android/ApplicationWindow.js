@@ -20,14 +20,20 @@ function ApplicationWindow(posts) {
     self.add(posts_view);
 
     function refreshClick() {
+        progress.show();
         rss.getRSSData(null, function(data) {
             posts_view.updateList(data.blog_posts);
+            progress.hide();
         });
     };
 
     var menu = AppMenu.createApplicationMenu(self, refreshClick);
-
     posts_view.setSearchView(menu.search);
+
+    var progress = Ti.UI.createActivityIndicator({
+        style: Ti.UI.ActivityIndicatorStyle.BIG
+    });
+    self.add(progress);
     return self;
 }
 
