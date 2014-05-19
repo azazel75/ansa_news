@@ -19,7 +19,20 @@ function BrowserWindow(link, title) {
         self.activity.actionBar.setOnHomeIconItemSelected(function() {
             self.close();
         });
+        self.activity.onCreateOptionsMenu = function(e) {
+            var menu = e.menu;
+            var menuItem = menu.add({
+                title: 'Condividi',
+                icon: Ti.Android.R.drawable.ic_menu_share,
+                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+            });
+            menuItem.addEventListener('click',
+                                      function(){
+                                          utils.shareURI(link, title);
+                                      });
+        };
     }
+
     self.addEventListener('open', onOpen);
     return self;
 }

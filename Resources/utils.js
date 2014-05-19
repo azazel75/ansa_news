@@ -104,5 +104,17 @@ function log() {
     a.unshift('ANSA>>>: ');
     console.log(a);
 }
+
+function shareURI(link, title) {
+    var intent = Ti.Android.createIntent(
+        {action: Ti.Android.ACTION_SEND,
+         type: 'text/plain'});
+    intent.putExtra(Ti.Android.EXTRA_SUBJECT, title);
+    intent.putExtra(Ti.Android.EXTRA_TEXT, link);
+    intent = Ti.Android.createIntentChooser(intent, 'Condividi con...');
+    Ti.Android.currentActivity.startActivity(intent);
+}
+
 exports.stripTags = stripTags;
 exports.log = log;
+exports.shareURI = shareURI;
