@@ -10,3 +10,7 @@ tmp
 /.project
 /.settings/
 .map
+/build/
+/build.sh
+/push_tag.sh
+/manifest
