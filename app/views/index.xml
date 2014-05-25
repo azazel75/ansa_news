@@ -1,16 +1,25 @@
 <Alloy>
-  <Collection src="post">
-    <Window class="container-main">
-      <ListView id="postsList">
-        <Templates>
-          <ItemTemplate name="post">
-            <Label bindId="title" class="post-title" />
-            <Label bindId="description" class="post-description"/>
-            <Label bindId="date" class="post-date" />
-          </ItemTemplate>
-          <ListSection id="postsContainer"/>
-        </Templates>
-      </ListView>
+  <Collection src="post"/>
+  <Window class="container-main">
+    <ListView id="postsList">
+      <Templates>
+        <ItemTemplate name="post">
+          <Label bindId="title" class="post-title" />
+          <Label bindId="description" class="post-description"/>
+          <Label bindId="date" class="post-date" />
+        </ItemTemplate>
+      </Templates>
+      <ListSection id="postsContainer"
+                   dataCollection="post"
+                   dataTransform="preparePostData"
+                   >
+        <ListItem title:text="{title}"
+                  description:text="{description}"
+                  date:text="{date}"
+                  properties:searchableText="{searchableText}"
+                  properties:layout="vertical"
+                  template='post'/>
+      </ListSection>
+    </ListView>
     </Window>
-  </Collection>
 </Alloy>
