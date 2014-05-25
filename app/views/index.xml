@@ -1,0 +1,16 @@
+<Alloy>
+  <Collection src="post">
+    <Window class="container-main">
+      <ListView id="postsList">
+        <Templates>
+          <ItemTemplate name="post">
+            <Label bindId="title" class="post-title" />
+            <Label bindId="description" class="post-description"/>
+            <Label bindId="date" class="post-date" />
+          </ItemTemplate>
+          <ListSection id="postsContainer"/>
+        </Templates>
+      </ListView>
+    </Window>
+  </Collection>
+</Alloy>
