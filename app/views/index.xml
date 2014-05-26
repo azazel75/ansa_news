@@ -1,7 +1,10 @@
 <Alloy>
   <Collection src="post"/>
-  <Window class="container-main">
+  <Window class="container-main" layout="vertical">
     <ListView id="postsList" onItemclick="showPost">
+      <SearchView ns="Ti.UI.Android" id="searchPosts"
+                  platform="android"
+                  hintText="Filtra i posts..."/>
       <Templates>
         <ItemTemplate name="post">
           <Label bindId="title" class="post-title" />
