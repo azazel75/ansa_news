@@ -1,7 +1,7 @@
 <Alloy>
   <Collection src="post"/>
   <Window class="container-main">
-    <ListView id="postsList">
+    <ListView id="postsList" onItemclick="showPost">
       <Templates>
         <ItemTemplate name="post">
           <Label bindId="title" class="post-title" />

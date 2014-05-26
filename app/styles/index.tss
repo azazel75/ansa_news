@@ -1,7 +1,8 @@
 ".container-main": {
-        backgroundColor: "white",
-        exitOnClose:true
-},
+    backgroundColor: "white",
+    exitOnClose:true
+}
+
 ".post-title": {
     left: '10dp',
     right: 10,

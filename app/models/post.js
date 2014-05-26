@@ -8,7 +8,7 @@ exports.definition = {
         },
         adapter: {
             type: "sql",
-            collection_name: "post",
+            collection_name: "posts",
             idAttribute: 'link'
         }
     },

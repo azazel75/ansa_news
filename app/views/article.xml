@@ -1,0 +1,12 @@
+<Alloy>
+  <Window class="container" onOpen="setupMenu">
+    <Menu id="menu" platform="android">
+      <MenuItem id="share" title="Condividi" onClick="share" />
+    </Menu>
+    <RightNavButton platform="ios,mobileweb">
+      <Button id="shareButton" onClick="share"/>
+    </RightNavButton>
+    <WebView id="browser">
+    </WebView>
+  </Window>
+</Alloy>
