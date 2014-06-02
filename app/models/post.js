@@ -27,7 +27,14 @@ exports.definition = {
                     self = this,
                     data;
                 function handleFeedData(feed) {
-                    self.add(feed.blog_posts);
+                    _.map(feed.blog_posts,
+                          function(post) {
+                              var pmodel;
+                              post.id = Ti.Utils.md5HexDigest(post.link);
+                              if (!self.get(post.id)) {
+                                  self.create(post);
+                              }
+                          });
                 }
                 rss.getRSSData(url, handleFeedData);
             }
