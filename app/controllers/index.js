@@ -7,7 +7,19 @@ function preparePostData(pmodel) {
 }
 
 function showPost(e) {
-    var post = posts.at(e.itemIndex);
+    var src = $.searchPosts.getValue() || '';
+    var filtered;
+    // fix for https://jira.appcelerator.org/browse/TIMOB-16079
+    if (src && src.length > 0) {
+        filtered = posts.filter(function(post) {
+            var p = post.toJSON();
+            var txt = p.title + ' ' + p.description;
+            return txt.indexOf(src) > -1;
+        });
+        post = filtered[e.itemIndex];
+    } else {
+        post = posts.at(e.itemIndex);
+    }
     var article = Alloy.createController('article', post)
                        .getView();
     article.open();
