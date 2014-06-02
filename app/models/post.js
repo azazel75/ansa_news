@@ -1,6 +1,7 @@
 exports.definition = {
     config: {
         columns: {
+            "id": "TEXT PRIMARY KEY",
             "link": "text",
             "title": "text",
             "date": "text",
@@ -9,7 +10,7 @@ exports.definition = {
         adapter: {
             type: "sql",
             collection_name: "posts",
-            idAttribute: 'link'
+            idAttribute: 'id'
         }
     },
     extendModel: function(Model) {
