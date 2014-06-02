@@ -24,5 +24,9 @@ function showPost(e) {
                        .getView();
     article.open();
 }
-posts.fetchRSS();
+
+function fetchPosts(e) {
+    posts.fetchRSS();
+}
+posts.fetch();
 $.index.open();

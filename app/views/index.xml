@@ -1,6 +1,9 @@
 <Alloy>
   <Collection src="post"/>
   <Window class="container-main" layout="vertical">
+    <Menu id="menu" platform="android">
+      <MenuItem id="refresh" title="Carica nuovi" onClick="fetchPosts" />
+    </Menu>
     <ListView id="postsList" onItemclick="showPost">
       <SearchView ns="Ti.UI.Android" id="searchPosts"
                   platform="android"

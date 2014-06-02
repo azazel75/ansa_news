@@ -24,3 +24,7 @@
         fontSize: 8
     }
 }
+
+"#refresh": {
+    icon: "images/refresh.png"
+}
