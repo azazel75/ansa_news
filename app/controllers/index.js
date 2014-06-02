@@ -1,8 +1,10 @@
+var moment = require('alloy/moment');
 var posts = Alloy.Collections.post;
 
 function preparePostData(pmodel) {
     var post = pmodel.toJSON();
     post.searchableText = post.title + ' ' + post.description;
+    post.date = moment(post.date).fromNow();
     return post;
 }
 

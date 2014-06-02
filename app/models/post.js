@@ -1,3 +1,4 @@
+var moment = require('alloy/moment');
 exports.definition = {
     config: {
         columns: {
@@ -37,6 +38,9 @@ exports.definition = {
                           });
                 }
                 rss.getRSSData(url, handleFeedData);
+            },
+            comparator: function(model) {
+                return 0 - moment(model.get('date')).unix();
             }
         });
 
