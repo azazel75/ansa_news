@@ -1,0 +1,29 @@
+".container-main": {
+    backgroundColor: "white",
+}
+
+".post-title": {
+    left: '10dp',
+    right: 10,
+    color: 'blue'
+}
+
+".post-description": {
+    left: 10,
+    right: 30,
+    color: 'black',
+    font: {
+        fontSize: 10
+    }
+}
+
+".post-date": {
+    right: 10,
+    font: {
+        fontSize: 8
+    }
+}
+
+"#refresh": {
+    icon: "images/refresh.png"
+}

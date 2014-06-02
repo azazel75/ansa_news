@@ -6,7 +6,8 @@ exports.definition = {
             "link": "text",
             "title": "text",
             "date": "text",
-            "description": "text"
+            "description": "text",
+            "idfeed": "integer"
         },
         adapter: {
             type: "sql",
@@ -23,21 +24,21 @@ exports.definition = {
     },
     extendCollection: function(Collection) {
         _.extend(Collection.prototype, {
-            fetchRSS: function(url) {
+            fetchRSS: function(feed) {
                 var rss = require('rss'),
                     self = this,
                     data;
-                function handleFeedData(feed) {
-                    _.map(feed.blog_posts,
+                function handleFeedData(data) {
+                    _.map(data.blog_posts,
                           function(post) {
-                              var pmodel;
                               post.id = Ti.Utils.md5HexDigest(post.link);
+                              post.idfeed = feed.get('id');
                               if (!self.get(post.id)) {
                                   self.create(post);
                               }
                           });
                 }
-                rss.getRSSData(url, handleFeedData);
+                rss.getRSSData(feed.get('url'), handleFeedData);
             },
             comparator: function(model) {
                 return 0 - moment(model.get('date')).unix();

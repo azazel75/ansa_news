@@ -3,28 +3,12 @@
     exitOnClose:true
 }
 
-".post-title": {
+".feed-name": {
     left: '10dp',
     right: 10,
     color: 'blue'
 }
 
-".post-description": {
-    left: 10,
-    right: 30,
-    color: 'black',
-    font: {
-        fontSize: 10
-    }
-}
-
-".post-date": {
-    right: 10,
-    font: {
-        fontSize: 8
-    }
-}
-
-"#refresh": {
-    icon: "images/refresh.png"
+"#add": {
+    icon: Ti.Android.R.drawable.ic_menu_add
 }

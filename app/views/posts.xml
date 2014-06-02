@@ -1,0 +1,34 @@
+<Alloy>
+  <Collection src="post"/>
+  <Window class="container-main" layout="vertical"
+          onOpen="setupMenu">
+    <Menu id="menu" platform="android">
+      <MenuItem id="refresh" title="Carica nuovi"
+                onClick="fetchPosts" />
+    </Menu>
+    <ListView id="postsList" onItemclick="showPost">
+      <SearchView ns="Ti.UI.Android" id="searchPosts"
+                  platform="android"
+                  hintText="Filtra i posts..."/>
+      <Templates>
+        <ItemTemplate name="post">
+          <Label bindId="title" class="post-title" />
+          <Label bindId="description" class="post-description"/>
+          <Label bindId="date" class="post-date" />
+        </ItemTemplate>
+      </Templates>
+      <ListSection id="postsContainer"
+                   dataCollection="post"
+                   dataTransform="preparePostData"
+                   dataFilter="filterPosts"
+                   >
+        <ListItem title:text="{title}"
+                  description:text="{description}"
+                  date:text="{date}"
+                  properties:searchableText="{searchableText}"
+                  properties:layout="vertical"
+                  template='post'/>
+      </ListSection>
+    </ListView>
+    </Window>
+</Alloy>
