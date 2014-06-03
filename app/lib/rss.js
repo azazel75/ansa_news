@@ -15,12 +15,17 @@ function getPosts(url, callback) {
                 channel = xml.documentElement.getElementsByTagName("channel"),
                 data = [],
                 items = xml.documentElement.getElementsByTagName("item"),
-                rss, i;
+                rss, i, date;
             for (i=0;i<items.length;i++) {
+                date = null;
+                date = items.item(i).getElementsByTagName("pubDate").item(0)
+                if (!date)
+                    // try with dublinCore
+                    date =  items.item(i).getElementsByTagNameNS('http://purl.org/dc/elements/1.1/', 'date').item(0) || {};
                 data.push({
                     title: items.item(i).getElementsByTagName("title").item(0).textContent,
                     link: items.item(i).getElementsByTagName("link").item(0).textContent,
-                    date: items.item(i).getElementsByTagName("pubDate").item(0).textContent,
+                    date: date.textContent,
                     description: utils.stripTags(items.item(i).getElementsByTagName("description").item(0).textContent)
 
                 });
