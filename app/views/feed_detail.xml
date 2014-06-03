@@ -1,0 +1,19 @@
+<Alloy>
+  <Window class="container-main">
+    <View class="container" layout="vertical">
+      <Label text="Modifica / Aggiungi feed" class="header"/>
+      <View class="field" layout="vertical">
+        <Label text="Nome"/>
+        <TextField id="name"/>
+      </View>
+      <View class="field" layout="vertical">
+        <Label text="URL"/>
+        <TextField id="url"/>
+      </View>
+      <View class="button-bar" layout="horizontal">
+        <Button id="ok" title="Ok" onClick="okResult"/>
+        <Button id="cancel" title="Annulla" onClick="cancelResult"/>
+      </View>
+    </View>
+  </Window>
+</Alloy>

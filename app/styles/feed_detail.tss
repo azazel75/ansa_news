@@ -1,0 +1,45 @@
+".container-main" : {
+    modal: true,
+    navBarHidden: true
+}
+
+".container": {
+    backgroundColor: "white",
+    borderRadius: 10,
+    width: "80%",
+    height: Ti.UI.SIZE,
+    borderColor: "black",
+    borderWidth: 2
+}
+
+".field": {
+    left: 10,
+    right: 10
+}
+
+".button-bar": {
+    left: 10,
+    right: 10
+}
+
+".field Label": {
+    textAlign: "left"
+}
+
+"Label": {
+    width: Ti.UI.FILL
+}
+
+"TextField": {
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}
+
+".header": {
+    color: "black",
+    textAlign: "center",
+}
+
+".button-bar Button": {
+    width: "50%"
+}
