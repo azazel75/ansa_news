@@ -115,6 +115,12 @@ function shareURI(link, title) {
     Ti.Android.currentActivity.startActivity(intent);
 }
 
+function getRSSLink(url, callback) {
+    var qry = 'select href, content from html where url="http://'+ url +'" and xpath="//link[@type=\'application/rss+xml\']"';
+    Ti.Yahoo.yql(qry, callback);
+}
+
 exports.stripTags = stripTags;
 exports.log = log;
 exports.shareURI = shareURI;
+exports.getRSSLink = getRSSLink;
