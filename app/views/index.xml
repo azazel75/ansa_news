@@ -2,7 +2,7 @@
   <Collection src="feed"/>
   <Window class="container-main" layout="vertical">
     <Menu id="menu" platform="android">
-      <MenuItem id="add" title="Aggiungi" />
+      <MenuItem id="add" title="Aggiungi" onClick="addFeed"/>
     </Menu>
     <ListView id="feedsList" onItemclick="showPosts">
       <Templates>
