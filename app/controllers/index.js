@@ -9,9 +9,7 @@ function showPosts(e) {
 
 function addFeed(e) {
     var feed = Alloy.createModel('feed');
-    var feed_detail = Alloy.createController('feed_detail', {feed: feed, callback: afterAddClose})
-        .getView();
-    feed_detail.open();
+    openFeedDialog(feed, afterAddClose);
 }
 
 function afterAddClose(result, feed) {
@@ -19,6 +17,21 @@ function afterAddClose(result, feed) {
         feed.save();
         feeds.add(feed);
     }
+}
+
+function editFeed(e) {
+    var feed = feeds.at(e.itemIndex);
+    function resHandler(result, feed) {
+        if (result === 'ok')
+            feed.save();
+    }
+    openFeedDialog(feed, resHandler);
+}
+
+function openFeedDialog(feed, callback) {
+    var feed_detail = Alloy.createController('feed_detail', {feed: feed, callback: callback})
+        .getView();
+    feed_detail.open();
 }
 
 feeds.fetch();

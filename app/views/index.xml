@@ -6,7 +6,7 @@
     </Menu>
     <ListView id="feedsList" onItemclick="showPosts">
       <Templates>
-        <ItemTemplate name="feed">
+        <ItemTemplate name="feed" onLongpress="editFeed">
           <Label bindId="name" class="feed-name" />
         </ItemTemplate>
       </Templates>

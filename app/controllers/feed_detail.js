@@ -18,7 +18,8 @@ function okResult() {
         if (result.success && data) {
             $.feed_detail.close();
             feed.set('url', data.link.href);
-            cback.call(undefined, 'ok', feed);
+            if (cback)
+                cback.call(undefined, 'ok', feed);
         } else {
             Ti.UI.createNotification({message: 'Nessun feed RSS trovato a questo indirizzo'}).show();
             $.url.focus();
@@ -30,5 +31,9 @@ function okResult() {
 
 function cancelResult() {
     $.feed_detail.close();
-    cback.call(undefined, 'cancel', feed);
+    if (cback)
+        cback.call(undefined, 'cancel', feed);
 }
+
+$.name.setValue(feed.get('name'));
+$.url.setValue(feed.get('site_url'));
