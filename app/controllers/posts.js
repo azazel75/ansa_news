@@ -37,6 +37,8 @@ function fetchPosts(e) {
 
 function filterPosts(ps) {
     feed_posts.reset(ps.where({idfeed: feed.id}));
+    if (feed_posts.length === 0)
+        fetchPosts();
     return feed_posts.models; // alloy si aspetta un array
 }
 
