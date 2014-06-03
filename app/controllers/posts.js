@@ -24,7 +24,7 @@ function showPost(e) {
         });
         post = filtered[e.itemIndex];
     } else {
-        post = posts.at(e.itemIndex);
+        post = feed_posts.at(e.itemIndex);
     }
     var article = Alloy.createController('article', post)
                        .getView();
